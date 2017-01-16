@@ -1,0 +1,30 @@
+<md-sidenav-layout fullscreen>
+	<md-sidenav #sidenav mode="side" opened="true">
+		<nav>
+			<h3>Reports</h3>
+			<ul>
+				<li><a>Game Results</a></li>
+				<li><a>Royalties</a></li>
+				<li><a>Game History</a></li>
+			</ul>
+		</nav>
+		<nav>
+			<h3>Games</h3>
+			<ul>
+				<li><a>Game Definitions</a></li>
+				<li><a>Game Configurations</a></li>
+				<li><a>My Games</a></li>
+			</ul>
+		</nav>
+		<nav>
+			<h3>Administration</h3>
+			<ul>
+				<li><a>My Account</a></li>
+				<li><a routerLink="/organizations">Organizations</a></li>
+				<li><a>Roles</a></li>
+				<li><a>Users</a></li>
+			</ul>
+		</nav>
+	</md-sidenav>
+	<router-outlet></router-outlet>
+</md-sidenav-layout> 
