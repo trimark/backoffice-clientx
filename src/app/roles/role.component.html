@@ -1,0 +1,25 @@
+<md-toolbar>Roles</md-toolbar>
+<md-card>
+	<md-card-content>
+		<div fxLayout="column">
+            <div fxFlex="100" style="border: solid 1px #f6f6f6; margin-top: 5px;">
+                <div fxFlex="100" fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                    <span>Roles</span>
+                </div>
+                <div fxFlex="100" fxLayout="row">
+                    <div fxFlex="33" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Roles</div>
+                    <div fxFlex="33" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Type</div>
+                    <div fxFlex="34" style="background: rgb(250, 250, 250); padding: 10px;">Description</div>
+                </div>
+                <div *ngFor="let role of roles" fxFlex="100" fxLayout="row" (click)="onSelect()">
+                    <div fxFlex="33" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{role.name}}</div>
+                    <div fxFlex="33" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{role.type}}</div>
+                    <div fxFlex="34" style="padding: 10px;">{{role.description}}</div>
+                </div>                    
+            </div>
+            <div fxFlex="100" fxLayout="row" fxLayoutAlign="end">
+                <a routerLink="/newrole" md-raised-button style="min-width: 95px;">New Role</a>
+            </div>
+        </div>
+	</md-card-content>
+</md-card>

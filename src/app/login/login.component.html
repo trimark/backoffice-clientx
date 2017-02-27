@@ -1,0 +1,29 @@
+<md-toolbar>Please enter your credentials</md-toolbar>
+<md-card>
+	<md-card-content>
+		<md-list>
+			<md-list-item>
+				<md-input-container fxFlex="100" style="width: 100%;">
+		            <input md-input placeholder="Username" [(ngModel)]="login.userName">
+		        </md-input-container>
+	        </md-list-item>
+	        <md-list-item>
+		        <md-input-container fxFlex="100" style="width: 100%;">
+		            <input type="password" md-input placeholder="Password" [(ngModel)]="login.password">
+		        </md-input-container>
+	        </md-list-item>
+	        <md-list-item>
+		        <md-select placeholder="Organization" [(ngModel)]="login.organization" name="organization" fxFlex="100" style="width: 100%;">
+		            <md-option *ngFor="let organization of organizations" [value]="organization.id">
+		                {{organization.name}}
+		            </md-option>
+		        </md-select>
+	        </md-list-item>
+        </md-list>
+	</md-card-content>
+	<md-card-footer>
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button md-raised-button style="margin: 6px 40px;" (click)="onLogin()">Login</button>
+        </div>
+    </md-card-footer>
+</md-card>

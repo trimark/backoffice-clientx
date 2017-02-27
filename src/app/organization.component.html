@@ -1,1 +1,48 @@
 <md-toolbar>Organizations</md-toolbar>
+<md-card>
+	<md-card-content>
+		<div fxLayout="row" fxLayoutAlign="center center">
+			<div fxFlex="50">
+				<div style="border: solid 1px rgb(225,225,225); box-sizing: border-box; display: block; margin: 0; overflow: hidden; padding: 0; position: relative; height: 200px;">
+					<div style="bottom: 0; box-sizing: border-box; left: 0; margin: 0; overflow-x: hidden; padding: 0; position: absolute; right: 0; top: 0;-webkit-overflow-scrolling: touch; overflow-y: scroll;">
+						<div class="md-virtual-repeat-sizer"></div>
+						<div class="md-virtual-repeat-offsetter">
+							<Tree [nodes]="nodes" (onActivate)="onSelectOrganization($event)"></Tree>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div fxFlex="25" fxLayout="column" fxLayoutAlign="space-around center" style="height: 200px">
+				<a md-raised-button style="min-width: 95px;">Edit</a>
+				<a routerLink="/neworganization" md-raised-button style="min-width: 95px;">Add</a>
+				<a md-raised-button style="min-width: 95px;">Activate</a>
+				<a md-raised-button style="min-width: 95px;">Deactivate</a>
+			</div>
+		</div>
+		<div fxLayout="row" fxLayoutAlign="center center" *ngIf="selectedOrganization">
+			<div fxFlex="75" style="border: solid 1px #f6f6f6; margin-top: 5px;">
+                <div fxFlex="100" layout="row" style="background: #f6f6f6; padding: 10px;">
+                    <span>{{selectedOrganization.name}}</span>
+                </div>
+                <!--
+                <div flex layout="row">
+                    <div flex="50" style="border-right: solid 1px rgb(225,225,225); padding: 5px;">Organization Type</div>
+                    <div flex="50" style="padding: 5px;">{{listOrganizationCtrl.selectedOrganization.type}}</div>
+                </div>
+                -->
+                <div fxLayout="row">
+                    <div fxFlex="50" style="border-right: solid 1px rgb(225,225,225); padding: 5px;">Parent Organization</div>
+                    <div fxFlex="50" style="padding: 5px;">{{selectedOrganization.parent.name}}</div>
+                </div>
+                <div fxLayout="row">
+                    <div fxFlex="50" style="border-right: solid 1px rgb(225,225,225); padding: 5px;">Role</div>
+                    <div fxFlex="50" style="padding: 5px;">Administrator</div>
+                </div>
+                <div fxLayout="row">
+                    <div fxFlex="50" style="border-right: solid 1px rgb(225,225,225); padding: 5px;">Status</div>
+                    <div fxFlex="50" style="padding: 5px;">Active</div>
+                </div>
+            </div>
+		</div>
+	</md-card-content>
+</md-card>

@@ -1,0 +1,30 @@
+<md-toolbar>New Organization</md-toolbar>
+<md-card>
+	<md-card-content>
+        <md-list>
+            <md-list-item>
+                <md-input-container fxFlex="100" style="width: 100%;">
+                    <input md-input placeholder="Parent Organization" [(ngModel)]="organization.parent.name">
+                </md-input-container>
+            </md-list-item>
+            <md-list-item>
+                <md-input-container fxFlex="100" style="width: 100%;">
+                    <input md-input placeholder="Organization Name" [(ngModel)]="organization.name">
+                </md-input-container>
+            </md-list-item>
+            <md-list-item>
+                <md-select placeholder="Organization Role" [(ngModel)]="organization.role" name="role" fxFlex="100" style="width: 100%;">
+                    <md-option *ngFor="let role of roles" [value]="role.id">
+                        {{role.name}}
+                    </md-option>
+                </md-select>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+    <md-card-footer>
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button md-raised-button style="margin: 6px 8px;" (click)="onSave()">Save</button>
+            <button md-raised-button style="margin: 6px 8px;">Cancel</button>
+        </div>
+    </md-card-footer>
+</md-card>

@@ -1,5 +1,5 @@
 <md-sidenav-layout fullscreen>
-	<md-sidenav #sidenav mode="side" opened="true">
+	<md-sidenav *ngIf="authenticated" #sidenav mode="side" opened="true">
 		<nav>
 			<h3>Reports</h3>
 			<ul>
@@ -21,7 +21,7 @@
 			<ul>
 				<li><a>My Account</a></li>
 				<li><a routerLink="/organizations">Organizations</a></li>
-				<li><a>Roles</a></li>
+				<li><a routerLink="/roles">Roles</a></li>
 				<li><a>Users</a></li>
 			</ul>
 		</nav>
