@@ -14,7 +14,7 @@
             </md-list-item>
             <md-list-item>
                 <md-select placeholder="Organization Role" [(ngModel)]="organization.role" name="role" fxFlex="100" style="width: 100%;">
-                    <md-option *ngFor="let role of roles" [value]="role.id">
+                    <md-option *ngFor="let role of roles" [value]="role">
                         {{role.name}}
                     </md-option>
                 </md-select>

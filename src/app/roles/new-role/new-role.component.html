@@ -3,16 +3,16 @@
 	<md-card-content>
 		<div fxLayout="row" style="width: 100%;">
             <md-input-container fxFlex="60">
-            	<input md-input placeholder="Role Name" [(ngModel)]="role.name">
+            	<input mdInput placeholder="Role Name" [(ngModel)]="role.name">
             </md-input-container>
-            <md-select placeholder="Type" [(ngModel)]="role.type" fxFlex="40" style="margin-top: 7px;">
+            <md-select placeholder="Type" [(ngModel)]="role.type" fxFlex="40" style="margin-top: 5px;">
 	            <md-option value="Organization">Organization</md-option>
 	            <md-option value="User">User</md-option>
 	        </md-select>
         </div>
         <div fxLayout="row" style="width: 100%;">
             <md-input-container fxFlex="100">
-            	<input md-input placeholder="Role Description" [(ngModel)]="role.description">
+            	<input mdInput placeholder="Role Description" [(ngModel)]="role.description">
             </md-input-container>
         </div>
         

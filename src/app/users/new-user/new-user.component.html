@@ -1,0 +1,52 @@
+<md-toolbar>New User</md-toolbar>
+<md-card>
+	<md-card-content>
+        <div fxFlex="100" fxLayout="row">
+            <md-select placeholder="Organization" [(ngModel)]="user.organization" name="organization" (change)="onSelectOrganization($event)" fxFlex="50">
+                <md-option *ngFor="let organization of organizations" [value]="organization">
+                    {{organization.name}}
+                </md-option>
+            </md-select>
+            <md-select placeholder="Role" [(ngModel)]="user.role" name="role" fxFlex="50">
+                <md-option *ngFor="let role of roles" [value]="role">
+                    {{role.name}}
+                </md-option>
+            </md-select>
+        </div>
+        <div fxFlex="100" fxLayout="row">
+            <md-input-container fxFlex="50">
+                <input mdInput placeholder="Username" [(ngModel)]="user.userName">
+            </md-input-container>
+            <md-input-container fxFlex="50">
+                <input type="password" mdInput placeholder="Password" [(ngModel)]="user.password">
+            </md-input-container>
+        </div>
+        <div fxFlex="100" fxLayout="row">
+            <md-input-container fxFlex="100">
+                <input mdInput placeholder="First Name" [(ngModel)]="user.accountProperties[0].value">
+            </md-input-container>
+        </div>
+        <div fxFlex="100" fxLayout="row">
+            <md-input-container fxFlex="100">
+                <input mdInput placeholder="Last Name" [(ngModel)]="user.accountProperties[1].value">
+            </md-input-container>
+        </div>
+        <div fxFlex="100" fxLayout="row">
+            <md-input-container fxFlex="50">
+                <input mdInput placeholder="E-mail" [(ngModel)]="user.accountProperties[2].value">
+            </md-input-container>
+            <md-input-container fxFlex="25">
+                <input mdInput placeholder="Phone" [(ngModel)]="user.accountProperties[3].value">
+            </md-input-container>
+            <md-input-container fxFlex="25">
+                <input mdInput placeholder="Mobile" [(ngModel)]="user.accountProperties[4].value">
+            </md-input-container>
+        </div>        
+    </md-card-content>
+    <md-card-footer>
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button md-raised-button style="margin: 6px 8px;" (click)="onSave()">Save</button>
+            <button md-raised-button style="margin: 6px 8px;">Cancel</button>
+        </div>
+    </md-card-footer>
+</md-card>

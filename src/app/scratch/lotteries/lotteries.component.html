@@ -1,0 +1,38 @@
+<md-toolbar>Lotteries</md-toolbar>
+<md-card>
+	<md-card-content>
+		<div fxLayout="column">
+            <div fxFlex="100" style="border: solid 1px #f6f6f6; margin-top: 5px;">
+                <div fxFlex="100" fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                    <span>Lotteries</span>
+                </div>
+                <div fxFlex="100" fxLayout="row">
+                    <div fxFlex="12" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Lottery Name</div>
+                    <div fxFlex="11" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Model</div>
+                    <div fxFlex="11" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Play Mode</div>
+                    <div fxFlex="11" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Streams</div>
+                    <div fxFlex="11" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Batches Issued</div>
+                    <div fxFlex="11" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Cards Sold</div>
+                    <div fxFlex="11" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">RTP</div>
+                    <div fxFlex="11" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Status</div>
+                    <div fxFlex="11" style="background: rgb(250, 250, 250); padding: 10px;">Date Created</div>
+                </div>
+                <div *ngFor="let lottery of lotteries" fxFlex="100" fxLayout="row">
+                    <div fxFlex="12" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lottery.name}}</div>
+                    <div fxFlex="11" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lottery.modelName}}</div>
+                    <div fxFlex="11" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">C</div>
+                    <div fxFlex="11" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">D</div>
+                    <div fxFlex="11" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">E</div>
+                    <div fxFlex="11" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">F</div>
+                    <div fxFlex="11" style="border-right: solid 1px rgb(225,225,225); padding: 10px;"></div>
+                    <div fxFlex="11" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lottery.status}}</div>
+                    <div fxFlex="11" style="padding: 10px;">{{lottery.created}}</div>
+                </div>                    
+            </div>
+            <div fxFlex="100" fxLayout="row" fxLayoutAlign="end">
+                <a routerLink="/scratch/lotteries/newlottery" md-raised-button style="min-width: 95px;">New Lottery</a>
+            </div>
+        </div>
+	</md-card-content>
+</md-card>
+

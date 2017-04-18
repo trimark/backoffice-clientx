@@ -52,7 +52,7 @@ export class Module {
 		return this.selectedMainAccessRight;
 	}
 
-	setHasMainAccessRights(hasMainAccessRights: boolean) {
+	setHasMainAccessRights(hasMainAccessRights: boolean): void {
 		this.hasMainAccessRights = hasMainAccessRights;
 	}
 
@@ -60,7 +60,7 @@ export class Module {
 		return this.hasMainAccessRights;
 	}
 
-	setHasAdditionalAccessRights(hasAdditionalAccessRights: boolean) {
+	setHasAdditionalAccessRights(hasAdditionalAccessRights: boolean): void {
 		this.hasAdditionalAccessRights = hasAdditionalAccessRights;
 	}
 

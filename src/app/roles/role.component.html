@@ -11,7 +11,7 @@
                     <div fxFlex="33" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Type</div>
                     <div fxFlex="34" style="background: rgb(250, 250, 250); padding: 10px;">Description</div>
                 </div>
-                <div *ngFor="let role of roles" fxFlex="100" fxLayout="row" (click)="onSelect()">
+                <div *ngFor="let role of roles" fxFlex="100" fxLayout="row" (click)="onSelect(role)">
                     <div fxFlex="33" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{role.name}}</div>
                     <div fxFlex="33" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{role.type}}</div>
                     <div fxFlex="34" style="padding: 10px;">{{role.description}}</div>
@@ -19,6 +19,51 @@
             </div>
             <div fxFlex="100" fxLayout="row" fxLayoutAlign="end">
                 <a routerLink="/newrole" md-raised-button style="min-width: 95px;">New Role</a>
+            </div>
+            <div fxFlex="100" fxLayout="row" *ngIf="selectedRole">
+                <fieldset class="demo-fieldset">
+                    <legend class="demo-legend">{{organization.name}}/{{selectedRole.name}}</legend>
+                    <div fxFlex="100" fxLayout="row">
+                        <div fxFlex="5" fxLayoutAlign="start center"><label>Type:</label></div>
+                        <div fxFlex="10" fxLayoutAlign="start center"><span>{{selectedRole.type}}</span></div>
+                        <div fxFlex="85" fxLayoutAlign="end center"><span><a routerLink="/editrole/{{selectedRole.id}}" md-raised-button style="min-width: 95px;">Edit Role</a></span></div>
+                    </div>
+                    <div fxFlex="100" style="border: solid 1px #f6f6f6; margin-top: 5px;">
+                        <div fxFlex="100" fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                            <span>Child Organization Access</span>
+                        </div>
+                        <div fxLayout="row" fxLayoutWrap>
+                            <div fxFlex="20" style="padding: 10px;"><md-checkbox md-no-ink class="md-primary">BetFairGroup</md-checkbox></div>
+                            <div fxFlex="20" style="padding: 10px;"><md-checkbox md-no-ink class="md-primary">BetFair Casino</md-checkbox></div>
+                            <div fxFlex="20" style="padding: 10px;"><md-checkbox md-no-ink class="md-primary">Bet365</md-checkbox></div>
+                            <div fxFlex="20" style="padding: 10px;"><md-checkbox md-no-ink class="md-primary">BetFairGroup</md-checkbox></div>
+                            <div fxFlex="20" style="padding: 10px;"><md-checkbox md-no-ink class="md-primary">BetFair Casino</md-checkbox></div>
+                            <div fxFlex="20" style="padding: 10px;"><md-checkbox md-no-ink class="md-primary">Bet365</md-checkbox></div>
+                            <div fxFlex="20" style="padding: 10px;"><md-checkbox md-no-ink class="md-primary">BetFairGroup</md-checkbox></div>
+                            <div fxFlex="20" style="padding: 10px;"><md-checkbox md-no-ink class="md-primary">BetFair Casino</md-checkbox></div>
+                            <div fxFlex="20" style="padding: 10px;"><md-checkbox md-no-ink class="md-primary">Bet365</md-checkbox></div>
+                        </div>
+                        <div fxLayout="row" style="padding-left: 10px;">
+                            <md-checkbox md-no-ink class="md-primary">Automatically give access to new organizations</md-checkbox>
+                        </div>    
+                    </div>
+                    <div *ngFor="let module of modules">
+                        <div fxFlex="100" style="border: solid 1px #f6f6f6; margin-top: 5px;">
+                            <div fxFlex="100" fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                                <span>{{module.name}}</span>
+                            </div>
+                            <div fxLayout="colum">
+                                <md-chip-list *ngIf="module.hasMainAccessRights">
+                                    <md-chip *ngFor="let accessRight of module.mainAccessRights">{{accessRight.permission.name}}</md-chip>
+                                </md-chip-list>
+                                <md-chip-list *ngIf="module.hasAdditionalAccessRights">
+                                    <md-chip *ngFor="let accessRight of module.additionalAccessRights">{{accessRight.permission.name}}</md-chip>
+                                </md-chip-list>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </fieldset>
             </div>
         </div>
 	</md-card-content>

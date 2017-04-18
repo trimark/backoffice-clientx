@@ -43,4 +43,16 @@ export class Role {
 	getAclEntries(): Array<AclEntry> {
 		return this.aclEntries;
 	}
+
+	static fromJson(json: any): Role {
+		let role: Role = new Role(json.id, json.name, json.description, json.type);
+		if (json.modulePermissions) {
+			let aclEntries: Array<AclEntry> = new Array<AclEntry>();
+			for (let modulePermission of json.modulePermissions) {
+				aclEntries.push(new AclEntry(modulePermission.module, modulePermission.permissions));
+			}
+			role.setAclEntries(aclEntries); 
+		}
+		return role;
+	}
 }

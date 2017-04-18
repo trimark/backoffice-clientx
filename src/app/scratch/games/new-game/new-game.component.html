@@ -1,0 +1,203 @@
+<md-toolbar>New Game</md-toolbar>
+<md-card>
+	<md-card-content>
+        <div style="border: solid 1px #f6f6f6; margin-top: 5px;">
+            <div fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                <span>General Settings</span>
+            </div>
+            <div fxLayout="row" style="width: 100%;">
+                <md-input-container fxFlex="100">
+                    <input mdInput placeholder="Game name" [(ngModel)]="game.name">
+                </md-input-container>
+            </div>
+            <div fxLayout="row" style="width: 100%;">
+                <md-input-container fxFlex="100">
+                    <input mdInput placeholder="Description" [(ngModel)]="game.description">
+                </md-input-container>
+            </div>
+            <div fxLayout="row" style="width: 100%;">
+                <md-input-container fxFlex="100">
+                    <input mdInput placeholder="Model Name" [(ngModel)]="game.modelName">
+                </md-input-container>
+            </div>
+            <div fxLayout="row" style="width: 100%;">
+                <md-input-container fxFlex="100">
+                    <input mdInput placeholder="Application" [(ngModel)]="game.application">
+                </md-input-container>
+            </div>
+            <div fxLayout="column" style="width: 100%;">
+                <div>Type</div>
+                <md-radio-group style="display: inline-flex; flex-direction: column;">
+                  <md-radio-button value="Deterministic">Deterministic</md-radio-button>
+                  <md-radio-button value="Probabilistic">Probabilistic</md-radio-button>
+                </md-radio-group>
+            </div>
+            <div fxLayout="column" style="width: 100%;">
+                <div>Play Mode</div>
+                <md-radio-group style="display: inline-flex; flex-direction: column;">
+                  <md-radio-button value="Real">Real</md-radio-button>
+                  <md-radio-button value="Fun">Fun</md-radio-button>
+                </md-radio-group>
+            </div>            
+        </div>
+        <div style="border: solid 1px #f6f6f6; margin-top: 5px;">
+            <div fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                <span>Detailed Settings</span>
+            </div>
+            <div fxLayout="row" style="width: 100%;">
+                <md-input-container fxFlex="100">
+                    <input mdInput placeholder="Number of Symbols" [(ngModel)]="game.numOfSymbols">
+                </md-input-container>
+            </div>
+
+
+
+            <div fxLayout="column" style="width: 100%;">
+                <div>Model settings</div>
+                <md-radio-group style="display: inline-flex; flex-direction: column;">
+                  <md-radio-button value="1"><span>New settings</span></md-radio-button>
+                  <md-radio-button value="2">
+                    <md-input-container fxFlex="100">
+                        <input mdInput placeholder="Base on existing model">
+                    </md-input-container>
+                  </md-radio-button>
+                  <md-radio-button value="3">
+                    <md-input-container fxFlex="100">
+                        <input mdInput placeholder="Clone existing model">
+                    </md-input-container>
+                  </md-radio-button>
+                </md-radio-group>
+            </div>
+            <div fxLayout="row" style="width: 100%;">    
+                <md-input-container fxFlex="100">
+                    <input mdInput placeholder="Number of lines" [(ngModel)]="lotteryModel.numOfLines">
+                </md-input-container>
+            </div>
+            <div fxLayout="column" style="width: 100%;">
+                <div>Win mechanic</div>
+                <md-radio-group style="display: inline-flex; flex-direction: column;" [(ngModel)]="lotteryModel.winMechanic">
+                  <md-radio-button value="1">Single symbol match (simple win or lose)</md-radio-button>
+                  <md-radio-button value="2">Varied symbol match (multiple prizes)</md-radio-button>
+                  <md-radio-button value="3">Amount match (multiple prizes)</md-radio-button>
+                </md-radio-group>
+            </div>
+            <div fxLayout="column" style="width: 100%;">
+                <div>Scratch mechanic</div>
+                <md-radio-group style="display: inline-flex; flex-direction: column;" [(ngModel)]="lotteryModel.scratchMechanic">
+                  <md-radio-button value="1">Scratch all</md-radio-button>
+                  <md-radio-button value="2">
+                    <md-input-container fxFlex="100">
+                        <input mdInput placeholder="Limit number of spots scratched to">
+                    </md-input-container>
+                  </md-radio-button>
+                </md-radio-group>
+            </div>
+            <div fxLayout="row" style="width: 100%;">    
+                <md-input-container fxFlex="100">
+                    <input mdInput placeholder="Number of prizes" [(ngModel)]="lotteryModel.numOfPrizes">
+                </md-input-container>
+            </div>
+            <div fxLayout="column" style="width: 100%;">
+                <div>Match mechanic</div>
+                <md-radio-group style="display: inline-flex; flex-direction: column;" [(ngModel)]="lotteryModel.matchMechanic">
+                  <md-radio-button value="1">
+                    <md-input-container fxFlex="100">
+                        <input mdInput placeholder="Quantity match (anywhere)">
+                    </md-input-container>
+                  </md-radio-button>
+                  <md-radio-button value="2">
+                    <div fxLayout="column" style="width: 100%;">
+                    	<div>Specific matches</div>
+                    	<md-checkbox md-no-ink class="md-primary">
+                    		<md-input-container fxFlex="100">
+		                        <input mdInput placeholder="In a row" [(ngModel)]="lotteryModel.rowMatches">
+		                    </md-input-container>
+                    	</md-checkbox>
+                    	<md-checkbox md-no-ink class="md-primary">
+                    		<md-input-container fxFlex="100">
+		                        <input mdInput placeholder="In a column" [(ngModel)]="lotteryModel.columnMatches">
+		                    </md-input-container>
+                    	</md-checkbox>
+                    	<md-checkbox md-no-ink class="md-primary">
+                    		<md-input-container fxFlex="100">
+		                        <input mdInput placeholder="In a diagonal" [(ngModel)]="lotteryModel.diagonalMatches">
+		                    </md-input-container>
+                    	</md-checkbox>
+                    	<md-checkbox md-no-ink class="md-primary">
+                    		<md-input-container fxFlex="100">
+		                        <input mdInput placeholder="In one or more patterns">
+		                    </md-input-container>
+                    	</md-checkbox>                      	
+                    </div>
+                  </md-radio-button>
+                </md-radio-group>
+            </div>
+        </div>
+        <div style="border: solid 1px #f6f6f6; margin-top: 5px;">
+            <div fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                <span>Multiplier</span>
+                <div fxLayout="column" style="width: 100%;">
+                	<md-checkbox md-no-ink class="md-primary">By game</md-checkbox>
+                	<md-checkbox md-no-ink class="md-primary">By row</md-checkbox>
+                	<md-checkbox md-no-ink class="md-primary">By column</md-checkbox>
+                	<md-checkbox md-no-ink class="md-primary">By diagonal</md-checkbox>
+                	<md-checkbox md-no-ink class="md-primary">By special wild card symbol</md-checkbox>
+                </div>
+                <div fxLayout="row" style="width: 100%;">    
+	                <md-input-container fxFlex="100">
+	                    <input mdInput placeholder="Number of Multipliers" [(ngModel)]="lotteryModel.numOfMultipliers">
+	                </md-input-container>
+	            </div>
+            </div>
+        </div>
+        <div style="border: solid 1px #f6f6f6; margin-top: 5px;">
+            <div fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                <span>Anticipation Controls</span>
+                <div fxLayout="column" style="width: 100%;">
+	                <div>Anticipation Control</div>
+	                <md-radio-group style="display: inline-flex; flex-direction: column;" [(ngModel)]="lotteryModel.anticipationControl">
+	                  <md-radio-button value="1">On</md-radio-button>
+	                  <md-radio-button value="2">Off</md-radio-button>
+	                </md-radio-group>
+	            </div>
+	            <div fxLayout="row" style="width: 100%;">    
+	                <md-input-container fxFlex="100">
+	                    <input mdInput placeholder="High Near Wins Pair" [(ngModel)]="lotteryModel.nearWinsPairHigh">
+	                </md-input-container>
+	            </div>
+	            <div fxLayout="row" style="width: 100%;">    
+	                <md-input-container fxFlex="100">
+	                    <input mdInput placeholder="Low Near Wins Pair" [(ngModel)]="lotteryModel.nearWinsPairLow">
+	                </md-input-container>
+	            </div>
+	            <div fxLayout="row" style="width: 100%;">    
+	                <md-input-container fxFlex="100">
+	                    <input mdInput placeholder="Distinct win pattern" [(ngModel)]="lotteryModel.distinctWinPattern">
+	                </md-input-container>
+	            </div>
+	            <div fxLayout="row" style="width: 100%;">    
+	                <md-input-container fxFlex="100">
+	                    <input mdInput placeholder="Near wins Pair Probability %" [(ngModel)]="lotteryModel.nearWinsPairProbabilityPct">
+	                </md-input-container>
+	            </div>
+	            <div fxLayout="row" style="width: 100%;">    
+	                <md-input-container fxFlex="100">
+	                    <input mdInput placeholder="Near wins Prize probability %" [(ngModel)]="lotteryModel.nearWinsPrizeProbabilityPct">
+	                </md-input-container>
+	            </div>
+	            <div fxLayout="row" style="width: 100%;">    
+	                <md-input-container fxFlex="100">
+	                    <input mdInput placeholder="Near wins Multiplier Probability %" [(ngModel)]="lotteryModel.nearWinsMultiplierProbabilityPct">
+	                </md-input-container>
+	            </div>
+            </div>
+        </div>        		
+    </md-card-content>
+    <md-card-footer>
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button md-raised-button style="margin: 6px 8px;" (click)="onSave()">Save</button>
+            <button md-raised-button style="margin: 6px 8px;">Cancel</button>
+        </div>
+    </md-card-footer>
+</md-card>
+

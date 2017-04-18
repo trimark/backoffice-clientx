@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { GLOBAL_DATA_SERVICE, ROLE_SERVICE } from '../../app.component';
+import { GLOBAL_DATA_SERVICE, ORGANIZATION_SERVICE, ROLE_SERVICE } from '../../app.component';
 import { IGlobalDataService } from '../../services/i-global-data-service';
+import { IOrganizationService } from '../../services/i-organization-service';
 import { IRoleService } from '../../services/i-role-service';
 import { Organization } from '../../models/organization';
 import { Role } from '../../models/role';
@@ -18,6 +19,7 @@ export class NewOrganizationComponent implements OnInit {
   constructor(
     private router: Router,
     @Inject(GLOBAL_DATA_SERVICE) globalDataService: IGlobalDataService,
+    @Inject(ORGANIZATION_SERVICE) private organizationService: IOrganizationService,
     @Inject(ROLE_SERVICE) roleService: IRoleService) {
   	this.organization = new Organization(0, "");
     let parent: Organization = globalDataService.getSelectedOrganization();
@@ -30,7 +32,9 @@ export class NewOrganizationComponent implements OnInit {
   }
 
   onSave(): void {
-    this.router.navigate(['./organizations']);
+    this.organizationService.createOrganization(this.organization).subscribe((response: string) => {
+      this.router.navigate(['./organizations']);
+    });
   }
 
   ngOnInit() {

@@ -3,6 +3,7 @@ import { Role } from './role';
 export class Organization {
 	private parent: Organization;
 	private role: Role;
+	private expanded: boolean = true;
 	private children: Array<Organization>;
 	
 	constructor (
@@ -46,7 +47,7 @@ export class Organization {
 		return this.children;
 	}
 
-	static fromJson (json: any) {
+	static fromJson(json: any): Organization {
 		let organization: Organization = new Organization(json.id, json.name);
 		if (json.parent) {
 			organization.setParent(new Organization(json.parent.id, json.parent.name));
@@ -55,7 +56,7 @@ export class Organization {
 			let children:Array<Organization> = new Array<Organization>();
 			for (let child of json.children) {
 				let childOrganization: Organization = Organization.fromJson(child);
-				childOrganization.setParent(organization);
+				//childOrganization.setParent(organization);
 				children.push(childOrganization);
 			}
 			organization.setChildren(children);

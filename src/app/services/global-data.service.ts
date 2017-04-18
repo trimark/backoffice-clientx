@@ -5,6 +5,8 @@ import { Module } from '../models/module';
 import { AclEntry } from '../models/acl-entry';
 import { AccessRight } from '../models/access-right';
 import { Permission } from '../models/permission';
+import { Game } from '../models/game';
+import { LotteryModel } from '../models/lottery-model';
 
 @Injectable()
 export class GlobalDataService implements IGlobalDataService {
@@ -226,8 +228,10 @@ export class GlobalDataService implements IGlobalDataService {
 	private organization: Organization;
 	private selectedOrganization: Organization;
   private authenticated:boolean;
-	private jwtToken: string = "organization=trimark|userName=superuser|password=password";
+	private jwtToken: string;
   private accessedPath: string;
+  private lotteryBaseGames: Array<Game>;
+  private lotteryModels: Array<LotteryModel>;
 
   constructor() { }
 
@@ -271,12 +275,27 @@ export class GlobalDataService implements IGlobalDataService {
 		return this.selectedOrganization;	
 	}
 
+  setLotteryBaseGames(lotteryBaseGames: Array<Game>): void {
+    this.lotteryBaseGames = lotteryBaseGames;
+  }
+
+  getLotteryBaseGames(): Array<Game> {
+    return this.lotteryBaseGames;
+  }
+
+  setLotteryModels(lotteryModels: Array<LotteryModel>): void {
+    this.lotteryModels = lotteryModels;
+  }
+
+  getLotteryModels(): Array<LotteryModel> {
+    return this.lotteryModels;
+  }
+
   createModules(aclEntries: Array<AclEntry>): Array<Module> {
     let modules: Array<Module> = new Array<Module>();
     for (let moduleMeta of this.modulesMeta) {
       modules.push(this.createModule(moduleMeta, aclEntries));
     }
-    console.log("Talipapa >>>> ", modules);
     return modules;
   }
 
@@ -285,10 +304,10 @@ export class GlobalDataService implements IGlobalDataService {
     let existingAclEntry: AclEntry = null;
     let accessRight: AccessRight = null;
     let permission: any = null;
-
+    
     if (aclEntries) {
       for (let aclEntry of aclEntries) {
-        if (aclEntry.getModuleName() === moduleMeta.id)
+        if (aclEntry.getModule() === moduleMeta.id)
         {
           existingAclEntry = aclEntry;
           break;
@@ -303,6 +322,11 @@ export class GlobalDataService implements IGlobalDataService {
         accessRight = new AccessRight(new Permission(permission.id, permission.name));
         accessRight.setAuthorized(existingAclEntry && existingAclEntry.getPermissions() && 
           existingAclEntry.getPermissions().indexOf(permission.id) >= 0);
+        
+        if (accessRight.isAuthorized()) {
+          module.setSelectedMainAccessRight(accessRight);
+        }
+
         mainAccessRights.push(accessRight);
       }
       module.setMainAccessRights(mainAccessRights);

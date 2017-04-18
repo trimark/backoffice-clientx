@@ -27,28 +27,7 @@ export class NewRoleComponent implements OnInit {
   }
 
   onSave(): void {
-    let aclEntries: Array<AclEntry> = new Array<AclEntry>();
-    for (let module of this.modules) {
-      for (let entry of module.getEntries()) {
-        let selectedMainAccessRight: AccessRight = entry.getSelectedMainAccessRight();
-        let permissions:Array<string> = new Array<string>();
-        if (selectedMainAccessRight) {
-          permissions.push(selectedMainAccessRight.getPermission().getId());
-        }
-        if (entry.getAdditionalAccessRights()) {
-          for (let additionalAccessRight of entry.getAdditionalAccessRights()) {
-            if (additionalAccessRight.isAuthorized()) {
-              permissions.push(additionalAccessRight.getPermission().getId());
-            }
-          }
-        }
-        if (permissions.length > 0) {
-          aclEntries.push(new AclEntry(module.getId(), permissions));
-        }
-      }
-    }
-    this.role.setAclEntries(aclEntries);
-    this.roleService.createRole(this.role).subscribe((response: string) => {
+    this.roleService.saveRole(this.role, this.modules).subscribe((response: string) => {
       this.router.navigate(["./roles"]);
     });
   }

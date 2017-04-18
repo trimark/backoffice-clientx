@@ -1,0 +1,40 @@
+<md-toolbar>Presets</md-toolbar>
+<md-card>
+	<md-card-content>
+		<div fxLayout="column">
+            <div fxFlex="100" style="border: solid 1px #f6f6f6; margin-top: 5px;">
+                <div fxFlex="100" fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                    <span>Models</span>
+                </div>
+                <div fxFlex="100" fxLayout="row">
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Model name</div>
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Variant</div>
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Grid size</div>
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Win mechanic</div>
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Number of prizes</div>
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Scratch mechanic</div>
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Match mechanic</div>
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Multiplier</div>
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">In Use</div>
+                    <div fxFlex="10" style="background: rgb(250, 250, 250); padding: 10px;">Active Batches</div>
+                </div>
+                <div *ngFor="let lotteryModel of lotteryModels" fxFlex="100" fxLayout="row">
+                    <div fxFlex="10" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lotteryModel.modelName}}</div>
+                    <div fxFlex="10" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lotteryModel.variantName}}</div>
+                    <div fxFlex="10" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lotteryModel.gridSize}}</div>
+                    <div fxFlex="10" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lotteryModel.winMechanic}}</div>
+                    <div fxFlex="10" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lotteryModel.numOfPrizes}}</div>
+                    <div fxFlex="10" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lotteryModel.scratchMechanic}}</div>
+                    <div fxFlex="10" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lotteryModel.matchMechanic}}</div>
+                    <div fxFlex="10" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{lotteryModel.multipliers}}</div>
+                    <div fxFlex="10" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">I</div>
+                    <div fxFlex="10" style="padding: 10px;">J</div>
+                </div>                    
+            </div>
+            <div fxFlex="100" fxLayout="row" fxLayoutAlign="end">
+                <a routerLink="/scratch/models/newmodel" md-raised-button style="min-width: 95px;">New Model</a>
+            </div>
+        </div>
+	</md-card-content>
+</md-card>
+

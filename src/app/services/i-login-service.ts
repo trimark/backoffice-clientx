@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
-import { LoginSuccessResponse } from './response/login-success-response';
+import { Authentication } from '../models/authentication';
+import { Login } from '../models/login';
 
 export interface ILoginService {
-	login(): Observable<LoginSuccessResponse>;
+	login(login: Login): Observable<Authentication>;
 }

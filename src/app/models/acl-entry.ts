@@ -1,11 +1,11 @@
 export class AclEntry {
 	constructor(
-		private moduleName: string,
+		private module: string,
 		private permissions: Array<string>
 	) { }
 
-	getModuleName(): string {
-		return this.moduleName;
+	getModule(): string {
+		return this.module;
 	}
 
 	getPermissions(): Array<string> {

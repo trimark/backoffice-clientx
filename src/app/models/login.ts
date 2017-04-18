@@ -1,33 +1,33 @@
 import { Organization } from './organization';
 
 export class Login {
-	private userName : string;
-	private password : string;
-	private organization : Organization;
+	private userName: string;
+	private password: string;
+	private organization: Organization;
 
-	constructor () { }
+	constructor() { }
 
-	setUserName (userName : string) {
+	setUserName(userName: string): void {
 		this.userName = userName;
 	}
 
-	getUserName () : string {
+	getUserName(): string {
 		return this.userName;
 	}
 
-	setPassword (password : string) {
+	setPassword(password: string): void {
 		this.password = password;
 	}
 
-	getPassword () : string {
+	getPassword(): string {
 		return this.password;
 	}
 
-	setOrganization (organization : Organization) {
+	setOrganization(organization: Organization): void {
 		this.organization = organization;
 	}
 
-	getOrganization () : Organization {
+	getOrganization(): Organization {
 		return this.organization;
 	} 
 }

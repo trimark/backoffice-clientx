@@ -1,0 +1,70 @@
+<md-toolbar>Users</md-toolbar>
+<md-card>
+	<md-card-content>
+		<div fxLayout="column">
+            <div fxFlex="100" style="border: solid 1px #f6f6f6; margin-top: 5px;">
+                <div fxFlex="100" fxLayout="row" style="background: #f6f6f6; padding: 10px;">
+                    <span>Users</span>
+                </div>
+                <div fxFlex="100" fxLayout="row">
+                    <div fxFlex="25" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Username</div>
+                    <div fxFlex="25" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Name</div>
+                    <div fxFlex="25" style="background: rgb(250, 250, 250); border-right: solid 1px rgb(225,225,225); padding: 10px;">Organization</div>
+                    <div fxFlex="25" style="background: rgb(250, 250, 250); padding: 10px;">Role</div>
+                </div>
+                <div *ngFor="let user of users" fxFlex="100" fxLayout="row" (click)="onSelect(user)">
+                    <div fxFlex="25" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{user.userName}}</div>
+                    <div fxFlex="25" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{user.getName()}}</div>
+                    <div fxFlex="25" style="border-right: solid 1px rgb(225,225,225); padding: 10px;">{{user.organization.name}}</div>
+                    <div fxFlex="25" style="padding: 10px;">{{user.role.name}}</div>
+                </div>
+            </div>
+            <div fxFlex="100" fxLayout="row" fxLayoutAlign="end">
+                <a routerLink="/newuser" md-raised-button style="min-width: 95px;">New</a>
+            </div>
+            <div fxFlex="100" fxLayout="row" *ngIf="selectedUser">
+                <fieldset class="demo-fieldset" fxFlex="100">
+                    <legend class="demo-legend">{{selectedUser.organization.name}}/{{selectedUser.userName}}</legend>
+                    <div fxFlex="100" fxLayout="row">
+	                	<div fxFlex="75" fxLayout="column">
+	            			<div fxFlex="100" fxLayout="row">
+	            				<div fxFlex="30"><label>Username:</label></div>
+	                            <div fxFlex="70"><span>{{selectedUser.userName}}</span></div>
+	                        </div>
+	                        <div fxFlex="100" fxLayout="row">
+	            				<div fxFlex="30"><label>Name:</label></div>
+	                            <div fxFlex="70"><span>{{selectedUser.getName()}}</span></div>
+	                        </div>
+	                        <div fxFlex="100" fxLayout="row">
+	            				<div fxFlex="30"><label>Organization:</label></div>
+	                            <div fxFlex="70"><span>{{selectedUser.organization.name}}</span></div>
+	                        </div>
+	                        <div fxFlex="100" fxLayout="row">
+	            				<div fxFlex="30"><label>Account status:</label></div>
+	                            <div fxFlex="70"><span>Active</span></div>
+	                        </div>
+	                        <div fxFlex="100" fxLayout="row">
+	            				<div fxFlex="30"><label>Phone:</label></div>
+	                            <div fxFlex="70"><span>{{selectedUser.accountProperties[3].value}}</span></div>
+	                        </div>
+	                        <div fxFlex="100" fxLayout="row">
+	            				<div fxFlex="30"><label>Mobile:</label></div>
+	                            <div fxFlex="70"><span>{{selectedUser.accountProperties[4].value}}</span></div>
+	                        </div>
+	                        <div fxFlex="100" fxLayout="row">
+	            				<div fxFlex="30"><label>Email:</label></div>
+	                            <div fxFlex="70"><span>{{selectedUser.accountProperties[2].value}}</span></div>
+	                        </div>
+	                	</div>
+	                	<div fxFlex="25" fxLayout="column">
+	                		<a routerLink="/newuser" md-raised-button style="min-width: 95px;">Edit</a>
+	                		<a routerLink="/newuser" md-raised-button style="min-width: 95px;">Change Password</a>
+	                		<a routerLink="/newuser" md-raised-button style="min-width: 95px;">Inactivate</a>
+	                	</div>
+                	</div>
+                </fieldset>
+            </div>
+        </div>
+	</md-card-content>
+</md-card>
+

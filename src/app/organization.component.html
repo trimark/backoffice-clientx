@@ -7,7 +7,7 @@
 					<div style="bottom: 0; box-sizing: border-box; left: 0; margin: 0; overflow-x: hidden; padding: 0; position: absolute; right: 0; top: 0;-webkit-overflow-scrolling: touch; overflow-y: scroll;">
 						<div class="md-virtual-repeat-sizer"></div>
 						<div class="md-virtual-repeat-offsetter">
-							<Tree [nodes]="nodes" (onActivate)="onSelectOrganization($event)"></Tree>
+							<Tree [nodes]="nodes" [options]="{isExpandedField: 'expanded'}" (onActivate)="onSelectOrganization($event)"></Tree>
 						</div>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
                 -->
                 <div fxLayout="row">
                     <div fxFlex="50" style="border-right: solid 1px rgb(225,225,225); padding: 5px;">Parent Organization</div>
-                    <div fxFlex="50" style="padding: 5px;">{{selectedOrganization.parent.name}}</div>
+                    <div fxFlex="50" style="padding: 5px;">{{parent.name}}</div>
                 </div>
                 <div fxLayout="row">
                     <div fxFlex="50" style="border-right: solid 1px rgb(225,225,225); padding: 5px;">Role</div>

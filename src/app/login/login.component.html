@@ -4,17 +4,17 @@
 		<md-list>
 			<md-list-item>
 				<md-input-container fxFlex="100" style="width: 100%;">
-		            <input md-input placeholder="Username" [(ngModel)]="login.userName">
+		            <input mdInput placeholder="Username" [(ngModel)]="login.userName">
 		        </md-input-container>
 	        </md-list-item>
 	        <md-list-item>
 		        <md-input-container fxFlex="100" style="width: 100%;">
-		            <input type="password" md-input placeholder="Password" [(ngModel)]="login.password">
+		            <input type="password" mdInput placeholder="Password" [(ngModel)]="login.password">
 		        </md-input-container>
 	        </md-list-item>
 	        <md-list-item>
 		        <md-select placeholder="Organization" [(ngModel)]="login.organization" name="organization" fxFlex="100" style="width: 100%;">
-		            <md-option *ngFor="let organization of organizations" [value]="organization.id">
+		            <md-option *ngFor="let organization of organizations" [value]="organization">
 		                {{organization.name}}
 		            </md-option>
 		        </md-select>
